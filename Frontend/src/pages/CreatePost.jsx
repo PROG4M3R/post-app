@@ -12,14 +12,14 @@ const CreatePost = () => {
 
     try {
       // sends form data to backend route '/' to create post
-      await axios.post('http://localhost:3000/', formData, {
+      await axios.post('https://post-app-q3zz.onrender.com/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       //alert('Post created successfully!');
       console.log('Post created successfully!');
-      
+
       navigate('/feed');
     }
     catch (err) {

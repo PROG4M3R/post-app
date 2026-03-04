@@ -14,7 +14,7 @@ const Feed = () => {
 
     // fetches data from backend '/posts' and stores in posts
     useEffect(()=>{
-        axios.get('http://localhost:3000/posts').then((res)=>{
+        axios.get('https://post-app-q3zz.onrender.com/posts').then((res)=>{
             setPosts(res.data.posts);
         }).catch((err)=>{
             console.log(err);
