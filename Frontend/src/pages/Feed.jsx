@@ -4,22 +4,25 @@ import axios from 'axios';
 
 
 const Feed = () => {
-    const [posts, setPosts] = useState([
-        {
-            _id:"1",
-            image:"https://cache.careers360.mobi/media/article_images/2023/5/3/aktu-engineering-colleges-uttar-pradesh-vacant-btech-seats-featu_cxeoJRM.jpg",
-            caption: "Beautiful University", 
-        }
-    ])
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // fetches data from backend '/posts' and stores in posts
-    useEffect(()=>{
-        axios.get('https://post-app-q3zz.onrender.com/posts').then((res)=>{
-            setPosts(res.data.posts);
-        }).catch((err)=>{
-            console.log(err);
-        })
-            
+    
+    const fetchPosts = async () => {
+        try {
+            // fetches data from backend '/posts' and stores in posts
+            const res = await axios.get('https://post-app-q3zz.onrender.com/posts');
+            setPosts(res.data.posts || []);
+            setLoading(false);
+        } catch (err) {
+            // handles error and retries after 2 seconds if fetch fails
+            console.error('fetch error', err);
+            setTimeout(fetchPosts, 2000);
+        }
+    };
+
+    useEffect(() => {
+        fetchPosts();
     }, []);
 
 

@@ -1,5 +1,5 @@
 const ImageKit = require("@imagekit/nodejs");
-
+require("dotenv").config();
 
 const imageKit = new ImageKit({
     privateKey: process.env.PRIVATE_KEY
