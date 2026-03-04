@@ -11,6 +11,7 @@ const CreatePost = () => {
     const formData = new FormData(e.target);
 
     try {
+      // sends form data to backend route '/' to create post
       await axios.post('http://localhost:3000/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -18,6 +19,7 @@ const CreatePost = () => {
       });
       //alert('Post created successfully!');
       console.log('Post created successfully!');
+      
       navigate('/feed');
     }
     catch (err) {
@@ -29,6 +31,7 @@ const CreatePost = () => {
 
 
   return (
+    //renders form to create post with image and caption
     <section className='create-post-section'>
         <h1>Create Post</h1>
         <form onSubmit={handleSubmit}>

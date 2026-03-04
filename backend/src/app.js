@@ -16,7 +16,7 @@ app.post("/", upload.single("image"), async (req ,res)=>{
     // image kit returns url of image after upload
     const result = await uploadFile(req.file.buffer);
     
-    
+    // creates document
     const post = await postModel.create({
         image: result.url,
         caption: req.body.caption
@@ -30,8 +30,11 @@ app.post("/", upload.single("image"), async (req ,res)=>{
 
 
 app.get("/posts",async (req,res)=>{
+    
+    //fetches all posts from db
     const posts = await postModel.find();
-
+    
+    //returns posts in response
     return res.status(200).json({
         message: "posts fetched succesfully",
         posts

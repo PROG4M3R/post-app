@@ -12,7 +12,7 @@ const Feed = () => {
         }
     ])
 
-
+    // fetches data from backend '/posts' and stores in posts
     useEffect(()=>{
         axios.get('http://localhost:3000/posts').then((res)=>{
             setPosts(res.data.posts);
@@ -22,6 +22,8 @@ const Feed = () => {
             
     }, []);
 
+
+    // renders the post from backend in feed page by mapping each post to a card element
     return (
     <section className='Feed-section'>
 {

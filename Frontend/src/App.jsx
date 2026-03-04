@@ -7,6 +7,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        {//frontend routes
+        }
         <Route path='/' element = {<CreatePost/>}/> 
         <Route path='/feed' element={<Feed/>}/>
       </Routes>
